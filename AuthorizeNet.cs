@@ -1,78 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Net;
-using System.IO;
 using System.Xml;
-using System.Data.Linq;
-using System.Reflection;
 using System.Xml.Linq;
+using AuthorizeNetLite.Attributes;
+using AuthorizeNetLite.Options;
 
-namespace AuthorizeNet {
-  [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
-  public class StringValue : Attribute {
-    public string Value { get; private set; }
-
-    public StringValue(string Value) {
-      this.Value = Value;
-    }
-  }
-  [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class, AllowMultiple = false)]
-  public class WebXmlValue : Attribute {
-    public string WebLabel { get; private set; }
-    public string XmlElement { get; private set; }
-
-    public WebXmlValue(string WebLabel, string XmlElement) {
-      this.WebLabel = WebLabel;
-      this.XmlElement = XmlElement;
-    }
-  }
-
-  public class StringEnum {
-    public static string GetValue(Enum value) {
-      string output = null;
-
-      StringValue[] attrs = value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(StringValue), false) as StringValue[];
-      if (attrs.Length > 0) { output = attrs[0].Value; }
-
-      return output;
-    }
-  }
-  public enum GatewayUrl : int {
-    [StringValue("https://api.authorize.net/xml/v1/request.api")]
-    Production = 0,
-    [StringValue("https://apitest.authorize.net/xml/v1/request.api")]
-    Development = 1
-  }
-  public enum TransactionType : int {
-    [StringValue("authCaptureTransaction")]
-    AuthCapture = 0,
-    [StringValue("authOnlyTransaction")]
-    AuthOnly = 1,
-    [StringValue("captureOnlyTransaction")]
-    CaptureOnly = 2,
-    [StringValue("priorAuthCaptureTransaction")]
-    PriorAuthCapture = 3,
-    [StringValue("voidTransaction")]
-    Void = 4,
-    [StringValue("refundTransaction")]
-    Refund = 5,
-    [StringValue("getSettledBatchRequestList")]
-    SettledBatchList = 6,
-    [StringValue("getTransactionListRequest")]
-    TransactionListRequest = 7,
-    [StringValue("getTransactionDetailsRequest")]
-    TransactionDetailRequest = 8,
-    [StringValue("getUnsettledTransactionListRequest")]
-    UnsettledTransactionListRequest = 9
-
-  }
-  public enum ChargeType : int {
-    CreditCard = 0,
-    ECheck = 1
-  }
+namespace AuthorizeNetLite {
+  
   public interface iAuthNetXmlUsuable {
     string ToXml();
   }
@@ -640,7 +578,6 @@ namespace AuthorizeNet {
   }
 
   public class AuthorizeNetRequest {
-
     private string APILogin { get; set; }
     private string TransactionKey { get; set; }
 
