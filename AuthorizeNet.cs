@@ -8,6 +8,9 @@ using System.Xml;
 using System.Xml.Linq;
 using AuthorizeNetLite.Attributes;
 using AuthorizeNetLite.Options;
+using System.Runtime.Serialization;
+using AuthorizeNetLite.Response;
+using System.Xml.Serialization;
 
 namespace AuthorizeNetLite {
   
@@ -285,70 +288,6 @@ namespace AuthorizeNetLite {
     }
   }
 
-  public class TransactionResponse {
-
-    private XmlDocument xDoc { get; set; }
-    private XmlNode TxnResponse { get; set; }
-    public bool Valid { get; private set; }
-
-    public int ResponseCode {
-      get {
-        return this.TxnResponse.SelectSingleNode("responseCode") != null ? int.Parse(this.TxnResponse.SelectSingleNode("responseCode").InnerText) : 0;
-      }
-
-    }
-    public string AuthCode {
-      get {
-        return this.TxnResponse.SelectSingleNode("authCode") != null ? this.TxnResponse.SelectSingleNode("authCode").InnerText : null;
-      }
-    }
-    public string AvsResultCode {
-      get {
-        return this.TxnResponse.SelectSingleNode("avsResultCode") != null ? this.TxnResponse.SelectSingleNode("avsResultCode").InnerText : null;
-      }
-    }
-    public string CvvResultCode {
-      get {
-        return this.TxnResponse.SelectSingleNode("cvvResultCode") != null ? this.TxnResponse.SelectSingleNode("cvvResultCode").InnerText : null;
-      }
-    }
-    public Int64 TransactionID {
-      get {
-        return this.TxnResponse.SelectSingleNode("transId") != null ? Int64.Parse(this.TxnResponse.SelectSingleNode("transId").InnerText) : 0;
-      }
-    }
-
-    public List<ResponseError> ResponseErrors { get; private set; }
-    public ResponseMessage Message { get; private set; }
-
-    public TransactionResponse(string ResponseXml) {
-      this.ResponseErrors = new List<ResponseError>();
-      this.xDoc = new XmlDocument();
-
-      try {
-        this.xDoc.LoadXml(ResponseXml);
-
-
-        this.TxnResponse = this.xDoc.DocumentElement.SelectSingleNode("transactionResponse");
-
-        if (this.TxnResponse.SelectSingleNode("errors") != null) {
-          foreach (XmlNode x in this.TxnResponse.SelectNodes("errors/error")) {
-            this.ResponseErrors.Add(new ResponseError(x));
-          }
-        }
-
-        if (this.TxnResponse.SelectSingleNode("message") != null) {
-          this.Message = new ResponseMessage(this.TxnResponse.SelectSingleNode("message"));
-        }
-
-
-        this.Valid = true;
-      }
-      catch (Exception e) {
-        this.Valid = false;
-      }
-    }
-  }
   public class ResponseError {
     private XmlNode ErrorNode { get; set; }
     public string ErrorCode {
@@ -404,7 +343,7 @@ namespace AuthorizeNetLite {
           }
         }
       }
-      catch (Exception e) {
+      catch (Exception) {
         this.Valid = false;
       }
     }
@@ -429,7 +368,7 @@ namespace AuthorizeNetLite {
         }
 
       }
-      catch (Exception e) {
+      catch (Exception) {
         this.Valid = false;
       }
     }
@@ -583,7 +522,7 @@ namespace AuthorizeNetLite {
 
     public StringBuilder RequestXml { get; private set; }
     public string ResponseXml { get; private set; }
-    public Stream ResponseStream { get; private set; }
+    public TransactionResponse Response { get; private set; }
 
     public double Amount { get; set; }
     public string CustomerIP { get; set; }
@@ -733,10 +672,13 @@ namespace AuthorizeNetLite {
         }
 
         HttpWebResponse authResponse = (HttpWebResponse)authRequest.GetResponse();
+
         using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
           this.ResponseXml = sr.ReadToEnd();
           this.ResponseXml = Regex.Replace(this.ResponseXml, @"(\s*xmlns:?[^=]*=[""][^""]*[""])", String.Empty);
-          sr.Close();
+
+          var serializer = new XmlSerializer(typeof(TransactionResponse));
+          this.Response = (TransactionResponse)serializer.Deserialize(sr);
         }
       }
       catch (WebException w) {
