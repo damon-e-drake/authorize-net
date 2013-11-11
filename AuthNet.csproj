@@ -50,6 +50,7 @@
     <Compile Include="Attributes\WebXmlValue.cs" />
     <Compile Include="AuthorizeNet.cs" />
     <Compile Include="Configuration\AvsCodeConfiguration.cs" />
+    <Compile Include="Configuration\CardCodeConfiguration.cs" />
     <Compile Include="Options\ChargeType.cs" />
     <Compile Include="Options\GatewayUrl.cs" />
     <Compile Include="Options\StringValue.cs" />
