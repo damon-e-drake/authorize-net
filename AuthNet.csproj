@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
@@ -48,6 +49,7 @@
     <Compile Include="Attributes\StringValue.cs" />
     <Compile Include="Attributes\WebXmlValue.cs" />
     <Compile Include="AuthorizeNet.cs" />
+    <Compile Include="Configuration\AvsCodeConfiguration.cs" />
     <Compile Include="Options\ChargeType.cs" />
     <Compile Include="Options\GatewayUrl.cs" />
     <Compile Include="Options\StringValue.cs" />
@@ -60,11 +62,14 @@
     <Compile Include="Response\TransactionSummary.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

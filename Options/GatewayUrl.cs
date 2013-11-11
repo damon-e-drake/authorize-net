@@ -5,6 +5,6 @@ namespace AuthorizeNetLite.Options {
     [StringValue("https://api.authorize.net/xml/v1/request.api")]
     Production = 0,
     [StringValue("https://apitest.authorize.net/xml/v1/request.api")]
-    Development = 1
+    Sandbox = 1
   }
 }
