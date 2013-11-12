@@ -12,13 +12,35 @@ namespace AuthorizeNetLite.Request {
     [XmlElement("amount")]
     public decimal Amount { get; set; }
 
+    [XmlElement("poNumber")]
+    public string PONumber { get; set; }
+
+    [XmlElement("order")]
+    public Order OrderInformation { get; set; }
+
     [XmlArray("payment")]
     [XmlArrayItem("creditCard", typeof(CreditCard))]
     public CreditCard[] CardInformation { get; set; }
+
+    [XmlElement("tax")]
+    public TransactionCharges Tax { get; set; }
+    [XmlElement("duty")]
+    public TransactionCharges Duty { get; set; }
+    [XmlElement("shipping")]
+    public TransactionCharges Shipping { get; set; }
+
+    [XmlArray("lineItems")]
+    [XmlArrayItem("lineItem", typeof(LineItem))]
+    public LineItem[] Items { get; set; }
 
     [XmlElement("billTo")]
     public Address BillingAddress { get; set; }
     [XmlElement("shipTo")]
     public Address ShippingAddress { get; set; }
+
+    [XmlElement("customer")]
+    public CustomerInformation Customer { get; set; }
+    [XmlElement("customerIP")]
+    public string CustomerIP { get; set; }
   }
 }

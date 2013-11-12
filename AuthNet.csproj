@@ -67,6 +67,10 @@
     <Compile Include="Transactions\Address.cs" />
     <Compile Include="Transactions\Authentication.cs" />
     <Compile Include="Transactions\CreditCard.cs" />
+    <Compile Include="Transactions\CustomerInformation.cs" />
+    <Compile Include="Transactions\LineItem.cs" />
+    <Compile Include="Transactions\OrderInformation.cs" />
+    <Compile Include="Transactions\TransactionCharges.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

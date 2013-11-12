@@ -62,60 +62,8 @@
 //    }
 //  }
 
-//  public class CustomerInformation : iAuthNetXmlUsuable {
-//    [WebXmlValue("Customer ID", "id")]
-//    public int ID { get; set; }
 
-//    [WebXmlValue("E-Mail Address", "email")]
-//    public string EMail { get; set; }
 
-//    public string ToXml() {
-//      StringBuilder sb = new StringBuilder();
-//      sb.Append("<customer>");
-
-//      foreach (var prop in this.GetType().GetProperties()) {
-//        WebXmlValue[] vals = prop.GetCustomAttributes(typeof(WebXmlValue), false) as WebXmlValue[];
-//        if (vals.Length > 0) {
-//          try {
-//            sb.AppendFormat("<{0}>{1}</{0}>", vals[0].XmlElement, prop.GetValue(this, null).ToString());
-//          }
-//          catch {
-
-//          }
-//        }
-//      }
-
-//      sb.Append("</customer>");
-//      return sb.ToString();
-//    }
-//  }
-//  public class Order : iAuthNetXmlUsuable {
-//    [WebXmlValue("Inovice Number", "invoiceNumber")]
-//    public string InvoiceNumber { get; set; }
-
-//    [WebXmlValue("Invoice Description", "description")]
-//    public string Description { get; set; }
-
-//    public string ToXml() {
-//      StringBuilder sb = new StringBuilder();
-//      sb.Append("<order>");
-
-//      foreach (var prop in this.GetType().GetProperties()) {
-//        WebXmlValue[] vals = prop.GetCustomAttributes(typeof(WebXmlValue), false) as WebXmlValue[];
-//        if (vals.Length > 0) {
-//          try {
-//            sb.AppendFormat("<{0}>{1}</{0}>", vals[0].XmlElement, prop.GetValue(this, null).ToString());
-//          }
-//          catch {
-
-//          }
-//        }
-//      }
-
-//      sb.Append("</order>");
-//      return sb.ToString();
-//    }
-//  }
 //  public class UserField : iAuthNetXmlUsuable {
 //    [WebXmlValue("User Defined Name", "name")]
 //    public String Name { get; set; }
@@ -143,45 +91,7 @@
 //      return sb.ToString();
 //    }
 //  }
-//  public class LineItem : iAuthNetXmlUsuable {
-//    [WebXmlValue("Item ID", "itemId")]
-//    public int ItemID { get; set; }
-
-//    [WebXmlValue("Name", "name")]
-//    public string Name { get; set; }
-
-//    [WebXmlValue("Description", "description")]
-//    public string Description { get; set; }
-
-//    [WebXmlValue("Quantity", "quantity")]
-//    public int Quantity { get; set; }
-
-//    [WebXmlValue("Price", "unitPrice")]
-//    public double Price { get; set; }
-
-//    public int ExTransactionCode { get; set; }
-
-
-//    public string ToXml() {
-//      StringBuilder sb = new StringBuilder();
-//      sb.Append("<lineItem>");
-
-//      foreach (var prop in this.GetType().GetProperties()) {
-//        WebXmlValue[] vals = prop.GetCustomAttributes(typeof(WebXmlValue), false) as WebXmlValue[];
-//        if (vals.Length > 0) {
-//          try {
-//            sb.AppendFormat("<{0}>{1}</{0}>", vals[0].XmlElement, prop.GetValue(this, null).ToString());
-//          }
-//          catch {
-
-//          }
-//        }
-//      }
-
-//      sb.Append("</lineItem>");
-//      return sb.ToString();
-//    }
-//  }
+//  
 //  public class TransactionSetting : iAuthNetXmlUsuable {
 //    [WebXmlValue("Setting Name", "settingName")]
 //    public String Name { get; set; }
