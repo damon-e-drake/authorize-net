@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections>
+    <section name="AvsCodeSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+    <section name="CardCodeSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+  </configSections>
+  <AvsCodeSection xdt:Transform="Remove"></AvsCodeSection>
+  <CardCodeSection xdt:Transform="Remove"></CardCodeSection>
+</configuration>

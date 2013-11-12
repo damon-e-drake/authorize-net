@@ -12,9 +12,7 @@ namespace AuthorizeNetLite.Configuration {
 
     public static AvsCodeCollection Codes {
       get {
-        var fileMap = new ConfigurationFileMap(string.Format("{0}.config", Assembly.GetExecutingAssembly().Location)); //Path to your config file
-        var configuration = System.Configuration.ConfigurationManager.OpenMappedMachineConfiguration(fileMap);
-        return ((AvsCodeConfiguration)configuration.GetSection("AvsCodeSection")).AvsCodes; 
+        return ((AvsCodeConfiguration)ConfigurationManager.GetSection("AvsCodeSection")).AvsCodes; 
       }
     }
   }

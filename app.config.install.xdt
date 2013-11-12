@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections>
+    <section name="AvsCodeSection" type="AuthorizeNetLite.Configuration.AvsCodeConfiguration, AuthorizeNetLite" xdt:Transform="Insert" />
+    <section name="CardCodeSection" type="AuthorizeNetLite.Configuration.CardCodeConfiguration, AuthorizeNetLite" xdt:Transform="Insert"/>
+  </configSections>
+  <AvsCodeSection xdt:Transform="Insert">
+    <AvsCodes xdt:Transform="Insert">
+      <add code="A" description="Address (Street) matches, ZipCode does not match." xdt:Transform="Insert"/>
+      <add code="B" description="Address information not provided for Address Verification System check." xdt:Transform="Insert" />
+      <add code="E" description="Address Verification System encountered an error." xdt:Transform="Insert" />
+      <add code="G" description="Non-US Carding Issuing Bank." xdt:Transform="Insert" />
+      <add code="N" description="Address (Street) and ZipCode does not match." xdt:Transform="Insert" />
+      <add code="P" description="Address Verification System was not applicable for this transaction." xdt:Transform="Insert" />
+      <add code="R" description="Retry. Address Verification System was unavailable or timed out." xdt:Transform="Insert" />
+      <add code="S" description="Address Verification Service is not supported by the issuer." xdt:Transform="Insert" />
+      <add code="U" description="Address information is unavailable." xdt:Transform="Insert" />
+      <add code="W" description="Address (Street) does not match, 9 Digit ZipCode does match." xdt:Transform="Insert" />
+      <add code="X" description="Address (Street) and 9 Digit ZipCode does match." xdt:Transform="Insert" />
+      <add code="Y" description="Address (Street) and 5 Digit ZipCode does match." xdt:Transform="Insert" />
+      <add code="Z" description="Address (Street) does not match, 5 Digit ZipCode does match." xdt:Transform="Insert" />
+    </AvsCodes>
+  </AvsCodeSection>
+  <CardCodeSection xdt:Transform="Insert">
+    <CardCodes xdt:Transform="Insert">
+      <add code="M" description="Card Code matches." xdt:Transform="Insert" />
+      <add code="N" description="Card Code does not match." xdt:Transform="Insert" />
+      <add code="P" description="Card Code was not processed." xdt:Transform="Insert" />
+      <add code="S" description="Card Code should have been present." xdt:Transform="Insert" />
+      <add code="U" description="Issuer was unable to process Card Code request." xdt:Transform="Insert" />
+    </CardCodes>
+  </CardCodeSection>
+</configuration>

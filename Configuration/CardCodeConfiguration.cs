@@ -11,9 +11,7 @@ namespace AuthorizeNetLite.Configuration {
 
     public static CardCodeCollection Codes {
       get {
-        var fileMap = new ConfigurationFileMap(string.Format("{0}.config", Assembly.GetExecutingAssembly().Location));
-        var configuration = System.Configuration.ConfigurationManager.OpenMappedMachineConfiguration(fileMap);
-        return ((CardCodeConfiguration)configuration.GetSection("CardCodeSection")).CardCodes;
+        return ((CardCodeConfiguration)ConfigurationManager.GetSection("CardCodeSection")).CardCodes;
       }
     }
   }
