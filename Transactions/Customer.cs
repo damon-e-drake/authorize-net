@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace AuthorizeNetLite.Transactions {
   [Serializable]
   [XmlRoot("customer")]
-  public sealed class CustomerInformation {
+  public sealed class Customer {
     [XmlElement("id")]
     public string ID { get; set; }
 
