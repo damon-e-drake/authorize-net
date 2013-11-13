@@ -2,7 +2,8 @@
 using System;
 using System.Xml.Serialization;
 
-namespace AuthorizeNetLite.Request {
+namespace AuthorizeNetLite.Request {  
+
   [Serializable]
   [XmlRoot("transactionRequest")]
   public sealed class TransactionBody {
@@ -12,9 +13,14 @@ namespace AuthorizeNetLite.Request {
     [XmlElement("amount")]
     public decimal Amount { get; set; }
 
+    //[XmlArray("payment")]
+    //[XmlArrayItem("creditCard", typeof(CreditCard))]
+    //public CreditCard[] CardInformation { get; set; }
+
     [XmlArray("payment")]
     [XmlArrayItem("creditCard", typeof(CreditCard))]
-    public CreditCard[] CardInformation { get; set; }
+    [XmlArrayItem("bankAccount", typeof(ECheck))]
+    public Payment[] Payment { get; set; }
 
     [XmlElement("order")]
     public Order OrderInformation { get; set; }

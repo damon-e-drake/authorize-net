@@ -68,8 +68,10 @@
     <Compile Include="Transactions\Authentication.cs" />
     <Compile Include="Transactions\CreditCard.cs" />
     <Compile Include="Transactions\Customer.cs" />
+    <Compile Include="Transactions\ECheck.cs" />
     <Compile Include="Transactions\LineItem.cs" />
     <Compile Include="Transactions\Order.cs" />
+    <Compile Include="Transactions\Payment.cs" />
     <Compile Include="Transactions\Setting.cs" />
     <Compile Include="Transactions\TransactionCharges.cs" />
     <Compile Include="Transactions\UserField.cs" />
