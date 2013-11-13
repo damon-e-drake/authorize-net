@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Attributes\StringValue.cs" />
     <Compile Include="Attributes\WebXmlValue.cs" />
-    <Compile Include="AuthorizeNet.cs" />
     <Compile Include="Configuration\AvsCodeConfiguration.cs" />
     <Compile Include="Configuration\CardCodeConfiguration.cs" />
     <Compile Include="Options\ChargeType.cs" />
@@ -66,6 +65,10 @@
     <Compile Include="Response\TransactionResponse.cs" />
     <Compile Include="Response\TransactionSummary.cs" />
     <Compile Include="TransactionDetails\Batch.cs" />
+    <Compile Include="TransactionDetails\BatchTransactionsRequest.cs" />
+    <Compile Include="TransactionDetails\BatchTransactionsResponse.cs" />
+    <Compile Include="TransactionDetails\TransactionDetailResponse.cs" />
+    <Compile Include="TransactionDetails\TransactionDetailRequest.cs" />
     <Compile Include="TransactionDetails\SettledBatchListResponse.cs" />
     <Compile Include="TransactionDetails\SettledBatchListRequest.cs" />
     <Compile Include="TransactionDetails\Statistic.cs" />

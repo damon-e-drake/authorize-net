@@ -8,19 +8,15 @@ using AuthorizeNetLite.Transactions;
 
 namespace AuthorizeNetLite.TransactionDetails {
   [Serializable]
-  [XmlRoot("getSettledBatchListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
-  public sealed class SettledBatchListRequest {
+  [XmlRoot("getTransactionListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
+  public sealed class BatchTransactionsRequest {
     [XmlElement("merchantAuthentication")]
     public Authentication Credentials { get; set; }
-    [XmlElement("includeStatistics")]
-    public bool IncludeStatistics { get; set; }
-    [XmlElement("firstSettlementDate")]
-    public DateTime StartDate { get; set; }
-    [XmlElement("lastSettlementDate")]
-    public DateTime EndDate { get; set; }
+    [XmlElement("batchId")]
+    public long BatchID { get; set; }
 
     [XmlIgnore]
-    public SettledBatchListResponse Response { get; private set; }
+    public BatchTransactionsResponse Response { get; set; }
 
     public void Post(GatewayUrl url) {
       string xml = "";
@@ -52,10 +48,9 @@ namespace AuthorizeNetLite.TransactionDetails {
 
         using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
           xml = sr.ReadToEnd();
-
           try {
-            var ser = new XmlSerializer(typeof(SettledBatchListResponse));
-            this.Response = (SettledBatchListResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
+            var ser = new XmlSerializer(typeof(BatchTransactionsResponse));
+            this.Response = (BatchTransactionsResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
           }
           catch (Exception e) {
             this.Response = null;

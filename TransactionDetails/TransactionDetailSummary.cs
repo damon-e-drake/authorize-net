@@ -11,6 +11,8 @@ namespace AuthorizeNetLite.TransactionDetails {
     public DateTime SubmittedUTC { get; set; }
     [XmlElement("submitTimeLocal")]
     public DateTime SubmittedLocal { get; set; }
+    [XmlElement("transactionStatus")]
+    public string Status { get; set; }
     [XmlElement("invoiceNumber")]
     public string InvoiceNumber { get; set; }
     [XmlElement("firstName")]
