@@ -65,6 +65,9 @@
     <Compile Include="Response\StatusMessage.cs" />
     <Compile Include="Response\TransactionResponse.cs" />
     <Compile Include="Response\TransactionSummary.cs" />
+    <Compile Include="TransactionDetails\TransactionDetailSummary.cs" />
+    <Compile Include="TransactionDetails\UnsettledRequest.cs" />
+    <Compile Include="TransactionDetails\UnsettledResponse.cs" />
     <Compile Include="Transactions\Address.cs" />
     <Compile Include="Transactions\Authentication.cs" />
     <Compile Include="Transactions\CreditCard.cs" />
