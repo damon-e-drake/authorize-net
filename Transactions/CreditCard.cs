@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
   [Serializable]
   [XmlRoot("creditCard")]
-  public sealed class CreditCard {
+  public sealed class CreditCard : Payment {
     [XmlElement("cardNumber")]
     public string CardNumber { get; set; }
     [XmlElement("expirationDate")]
