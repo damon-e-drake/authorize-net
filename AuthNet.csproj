@@ -26,7 +26,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -54,6 +54,7 @@
     <Compile Include="Options\ChargeType.cs" />
     <Compile Include="Options\GatewayUrl.cs" />
     <Compile Include="Options\StringValue.cs" />
+    <Compile Include="Options\TransactionDetailType.cs" />
     <Compile Include="Options\TransactionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\TransactionBody.cs" />

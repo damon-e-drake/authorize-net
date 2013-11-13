@@ -2,7 +2,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace AuthorizeNetLite.Request {  
+namespace AuthorizeNetLite.Request {
 
   [Serializable]
   [XmlRoot("transactionRequest")]
@@ -13,14 +13,16 @@ namespace AuthorizeNetLite.Request {
     [XmlElement("amount")]
     public decimal Amount { get; set; }
 
-    //[XmlArray("payment")]
-    //[XmlArrayItem("creditCard", typeof(CreditCard))]
-    //public CreditCard[] CardInformation { get; set; }
-
     [XmlArray("payment")]
     [XmlArrayItem("creditCard", typeof(CreditCard))]
     [XmlArrayItem("bankAccount", typeof(ECheck))]
     public Payment[] Payment { get; set; }
+
+    [XmlElement("authCode")]
+    public string AuthorizationCode { get; set; }
+
+    [XmlElement("refTransId")]
+    public string ReferencedTransactionID { get; set; }
 
     [XmlElement("order")]
     public Order OrderInformation { get; set; }
@@ -45,7 +47,7 @@ namespace AuthorizeNetLite.Request {
     public Address ShippingAddress { get; set; }
 
     [XmlElement("poNumber")]
-    public string PONumber { get; set; } 
+    public string PONumber { get; set; }
 
     [XmlElement("customerIP")]
     public string CustomerIP { get; set; }

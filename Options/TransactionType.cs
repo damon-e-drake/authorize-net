@@ -13,14 +13,6 @@ namespace AuthorizeNetLite.Options {
     [StringValue("voidTransaction")]
     Void = 4,
     [StringValue("refundTransaction")]
-    Refund = 5,
-    [StringValue("getSettledBatchRequestList")]
-    SettledBatchList = 6,
-    [StringValue("getTransactionListRequest")]
-    TransactionListRequest = 7,
-    [StringValue("getTransactionDetailsRequest")]
-    TransactionDetailRequest = 8,
-    [StringValue("getUnsettledTransactionListRequest")]
-    UnsettledTransactionListRequest = 9
+    Refund = 5
   }
 }
