@@ -4,6 +4,10 @@
     <section name="AvsCodeSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
     <section name="CardCodeSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
   </configSections>
-  <AvsCodeSection xdt:Transform="Remove"></AvsCodeSection>
-  <CardCodeSection xdt:Transform="Remove"></CardCodeSection>
+  <appSettings>
+    <add key="AuthorizeNetApiLogin" value="" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="AuthorizeNetTransactionKey" value="" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+  </appSettings>
+  <AvsCodeSection xdt:Transform="Remove" />
+  <CardCodeSection xdt:Transform="Remove" />
 </configuration>

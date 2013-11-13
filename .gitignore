@@ -157,3 +157,6 @@ $RECYCLE.BIN/
 /AuthNetConsole
 /AuthNet.sln
 /packages
+/.nuget/NuGet.Config
+*.nuspec
+*.nupkg
