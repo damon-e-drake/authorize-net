@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace AuthorizeNetLite.Response {
   [Serializable]
   [XmlRoot("messages")]
-  public class Status {
+  public sealed class Status {
     [XmlElement("resultCode")]
     public string ResultCode { get; set; }
     [XmlElement("message")]

@@ -65,6 +65,10 @@
     <Compile Include="Response\StatusMessage.cs" />
     <Compile Include="Response\TransactionResponse.cs" />
     <Compile Include="Response\TransactionSummary.cs" />
+    <Compile Include="TransactionDetails\Batch.cs" />
+    <Compile Include="TransactionDetails\SettledBatchListResponse.cs" />
+    <Compile Include="TransactionDetails\SettledBatchListRequest.cs" />
+    <Compile Include="TransactionDetails\Statistic.cs" />
     <Compile Include="TransactionDetails\TransactionDetailSummary.cs" />
     <Compile Include="TransactionDetails\UnsettledRequest.cs" />
     <Compile Include="TransactionDetails\UnsettledResponse.cs" />

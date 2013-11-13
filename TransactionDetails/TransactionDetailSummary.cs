@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
   [Serializable]
   [XmlRoot("transaction")]
-  public class TransactionDetailSummary {
+  public sealed class TransactionDetailSummary {
     [XmlElement("transId")]
     public long TransactionID { get; set; }
     [XmlElement("submitTimeUTC")]
