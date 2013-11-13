@@ -38,8 +38,6 @@ namespace AuthorizeNetLite.Request {
         }
       }
 
-      Console.WriteLine(xml);
-
       this.Response = null;
       this.Error = null;
 
@@ -57,7 +55,6 @@ namespace AuthorizeNetLite.Request {
 
         using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
           xml = sr.ReadToEnd();
-          Console.WriteLine(xml);
           try {
             var ser = new XmlSerializer(typeof(TransactionResponse));
             this.Response = (TransactionResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
