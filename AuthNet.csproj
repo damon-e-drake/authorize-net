@@ -67,6 +67,7 @@
     <Compile Include="TransactionDetails\Batch.cs" />
     <Compile Include="TransactionDetails\BatchTransactionsRequest.cs" />
     <Compile Include="TransactionDetails\BatchTransactionsResponse.cs" />
+    <Compile Include="TransactionDetails\TransactionDetail.cs" />
     <Compile Include="TransactionDetails\TransactionDetailResponse.cs" />
     <Compile Include="TransactionDetails\TransactionDetailRequest.cs" />
     <Compile Include="TransactionDetails\SettledBatchListResponse.cs" />

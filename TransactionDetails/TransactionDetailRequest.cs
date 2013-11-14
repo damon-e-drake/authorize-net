@@ -48,7 +48,6 @@ namespace AuthorizeNetLite.TransactionDetails {
 
         using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
           xml = sr.ReadToEnd();
-
           try {
             var ser = new XmlSerializer(typeof(TransactionDetailResponse));
             this.Response = (TransactionDetailResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
