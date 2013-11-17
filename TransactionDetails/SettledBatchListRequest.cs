@@ -20,24 +20,23 @@ namespace AuthorizeNetLite.TransactionDetails {
     public DateTime EndDate { get; set; }
 
     [XmlIgnore]
-    public SettledBatchListResponse Response { get; private set; }
+    public SettledBatchListResponse Response {
+      get {
+        string xml = "";
 
-    public void Post(GatewayUrl url) {
-      string xml = "";
-
-      var serializer = new XmlSerializer(this.GetType());
-      var xn = new XmlSerializerNamespaces();
-      xn.Add("", "");
-      using (MemoryStream ms = new MemoryStream()) {
-        using (StreamWriter sw = new StreamWriter(ms)) {
-          serializer.Serialize(sw, this);
-          ms.Position = 0;
-          xml = Encoding.UTF8.GetString(ms.ToArray());
+        var serializer = new XmlSerializer(this.GetType());
+        var xn = new XmlSerializerNamespaces();
+        xn.Add("", "");
+        using (MemoryStream ms = new MemoryStream()) {
+          using (StreamWriter sw = new StreamWriter(ms)) {
+            serializer.Serialize(sw, this);
+            ms.Position = 0;
+            xml = Encoding.UTF8.GetString(ms.ToArray());
+          }
         }
-      }
 
-      try {
-        HttpWebRequest authRequest = (HttpWebRequest)WebRequest.Create(StringEnum.GetValue(url));
+        SettledBatchListResponse response = null;
+        HttpWebRequest authRequest = (HttpWebRequest)WebRequest.Create(StringEnum.GetValue(Configuration.Endpoint));
         authRequest.Method = "POST";
         authRequest.ContentLength = xml.Length;
         authRequest.ContentType = "text/xml";
@@ -46,8 +45,6 @@ namespace AuthorizeNetLite.TransactionDetails {
           sw.Write(xml);
         }
 
-        this.Response = null;
-
         HttpWebResponse authResponse = (HttpWebResponse)authRequest.GetResponse();
 
         using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
@@ -55,16 +52,20 @@ namespace AuthorizeNetLite.TransactionDetails {
 
           try {
             var ser = new XmlSerializer(typeof(SettledBatchListResponse));
-            this.Response = (SettledBatchListResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
+            response = (SettledBatchListResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
           }
           catch (Exception e) {
-            this.Response = null;
+            response = null;
           }
         }
+
+        return response;
+
       }
-      catch (WebException w) {
-        Console.WriteLine(w.Message);
-      }
+    }
+
+    public SettledBatchListRequest() {
+      this.Credentials = Configuration.MerchantAuthentication;
     }
   }
 }
