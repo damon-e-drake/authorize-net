@@ -1,19 +1,20 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
-  [XmlRoot("creditCard")]
-  public sealed class CreditCard : Payment {
-    [XmlElement("cardNumber")]
+  [DataContract(Name = "creditCard", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
+  public sealed class CreditCard {
+    [DataMember(Name = "cardNumber", Order = 0, EmitDefaultValue = false)]
     public string CardNumber { get; set; }
-    [XmlElement("expirationDate")]
+    [DataMember(Name = "expirationDate", Order = 1, EmitDefaultValue = false)]
     public string ExpirationDate { get; set; }
-    [XmlElement("cardCode")]
+    [DataMember(Name = "accountType", Order = 2, EmitDefaultValue = false)]
+    public string CardType { get; set; }
+    [DataMember(Name = "cardCode", Order = 3, EmitDefaultValue = false)]
     public string CardCode { get; set; }
-    [XmlElement("track1")]
+    [DataMember(Name = "track1", Order = 4, EmitDefaultValue = false)]
     public string FirstDataTrack { get; set; }
-    [XmlElement("track2")]
+    [DataMember(Name = "track2", Order = 5, EmitDefaultValue = false)]
     public string SecondDataTrack { get; set; }
   }
 }

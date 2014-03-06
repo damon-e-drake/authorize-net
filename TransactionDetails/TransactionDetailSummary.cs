@@ -1,29 +1,28 @@
 ﻿using System;
-using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
-  [XmlRoot("transaction")]
+  [DataContract(Name = "transaction", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class TransactionDetailSummary {
-    [XmlElement("transId")]
+    [DataMember(Name = "transId", Order = 0)]
     public long TransactionID { get; set; }
-    [XmlElement("submitTimeUTC")]
+    [DataMember(Name = "submitTimeUTC", Order = 1)]
     public DateTime SubmittedUTC { get; set; }
-    [XmlElement("submitTimeLocal")]
+    [DataMember(Name = "submitTimeLocal", Order = 2)]
     public DateTime SubmittedLocal { get; set; }
-    [XmlElement("transactionStatus")]
+    [DataMember(Name = "transactionStatus", Order = 3)]
     public string Status { get; set; }
-    [XmlElement("invoiceNumber")]
+    [DataMember(Name = "invoiceNumber", Order = 4)]
     public string InvoiceNumber { get; set; }
-    [XmlElement("firstName")]
+    [DataMember(Name = "firstName", Order = 5)]
     public string FirstName { get; set; }
-    [XmlElement("lastName")]
+    [DataMember(Name = "lastName", Order = 6)]
     public string LastName { get; set; }
-    [XmlElement("accountType")]
+    [DataMember(Name = "accountType", Order = 7)]
     public string AccountType { get; set; }
-    [XmlElement("accountNumber")]
+    [DataMember(Name = "accountNumber", Order = 8)]
     public string AccountNumber { get; set; }
-    [XmlElement("settleAmount")]
+    [DataMember(Name = "settleAmount" , Order = 9)]
     public decimal SettlementAmount { get; set; }
   }
 }

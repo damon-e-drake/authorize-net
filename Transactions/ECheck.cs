@@ -1,29 +1,19 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
-  [XmlRoot("bankAccount")]
-  public sealed class ECheck : Payment {
-    //[XmlElement("accountType")]
-    //public string AccountType { get; set; }
-
-    [XmlElement("routingNumber")]
+  [DataContract(Name = "bankAccount", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
+  public sealed class ECheck  {
+    [DataMember(Name = "accountType", EmitDefaultValue = false, Order = 0)]
+    public string AccountType { get; set; }
+    [DataMember(Name = "routingNumber", EmitDefaultValue = false, Order = 1)]
     public string RoutingNumber { get; set; }
-
-    [XmlElement("accountNumber")]
+    [DataMember(Name = "accountNumber", EmitDefaultValue = false, Order = 2)]
     public string AccountNumber { get; set; }
-
-    [XmlElement("nameOnAccount")]
+    [DataMember(Name = "nameOnAccount", EmitDefaultValue = false, Order = 3)]
     public string AccountName { get; set; }
-
-    [XmlElement("echeckType")]
-    public string CheckType { get; set; }
-
-    [XmlElement("bankName")]
+    [DataMember(Name = "bankName", EmitDefaultValue = false, Order = 4)]
     public string BankName { get; set; }
-
-    //[XmlElement("checkNumber")]
-    //public string CheckNumber { get; set; }
+    //[DataMember(Name = "echeckType", EmitDefaultValue = false, Order = 4)]
+    //public string CheckType { get; set; }
   }
 }

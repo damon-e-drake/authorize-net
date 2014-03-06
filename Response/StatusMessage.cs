@@ -1,13 +1,11 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Response {
-  [Serializable]
-  [XmlRoot("message")]
+  [DataContract(Name = "message", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public class StatusMessage {
-    [XmlElement("code")]
+    [DataMember(Name = "code", Order = 0)]
     public string Code { get; set; }
-    [XmlElement("text")]
+    [DataMember(Name = "text", Order = 1)]
     public string Text { get; set; }
   }
 }

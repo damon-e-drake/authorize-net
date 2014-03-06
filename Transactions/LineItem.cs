@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
-  [XmlRoot("lineItem")]
+  [DataContract(Name = "lineItem", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class LineItem {
-    [XmlElement("itemId")]
+    [DataMember(Name = "itemId", Order = 0)]
     public string ItemID { get; set; }
-    [XmlElement("name")]
+    [DataMember(Name = "name", Order = 1)]
     public string Name { get; set; }
-    [XmlElement("description")]
+    [DataMember(Name = "description", Order = 2)]
     public string Description { get; set; }
-    [XmlElement("quantity")]
+    [DataMember(Name = "quantity", Order = 3)]
     public decimal Quantity { get; set; }
-    [XmlElement("unitPrice")]
+    [DataMember(Name = "unitPrice", Order = 4)]
     public decimal Price { get; set; }
   }
 }

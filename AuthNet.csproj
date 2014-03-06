@@ -38,7 +38,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Attributes\StringValue.cs" />
     <Compile Include="Attributes\WebXmlValue.cs" />
+    <Compile Include="BaseClasses.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Helpers\LightCardCharge.cs" />
     <Compile Include="Options\ChargeType.cs" />
     <Compile Include="Options\GatewayUrl.cs" />
     <Compile Include="Options\StringValue.cs" />
@@ -58,12 +62,14 @@
     <Compile Include="Request\TransactionBody.cs" />
     <Compile Include="Request\TransactionRequest.cs" />
     <Compile Include="Response\ErrorResponse.cs" />
+    <Compile Include="Response\Message.cs" />
     <Compile Include="Response\ResponseError.cs" />
     <Compile Include="Response\Status.cs" />
     <Compile Include="Response\StatusMessage.cs" />
     <Compile Include="Response\TransactionResponse.cs" />
     <Compile Include="Response\TransactionSummary.cs" />
     <Compile Include="TransactionDetails\Batch.cs" />
+    <Compile Include="TransactionDetails\BatchRequest.cs" />
     <Compile Include="TransactionDetails\BatchTransactionsRequest.cs" />
     <Compile Include="TransactionDetails\BatchTransactionsResponse.cs" />
     <Compile Include="TransactionDetails\TransactionDetail.cs" />
@@ -86,14 +92,9 @@
     <Compile Include="Transactions\Setting.cs" />
     <Compile Include="Transactions\TransactionCharges.cs" />
     <Compile Include="Transactions\UserField.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config.install.xdt">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="app.config.uninstall.xdt">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="web.config.uninstall.xdt">
       <SubType>Designer</SubType>
     </None>

@@ -1,13 +1,12 @@
-﻿using System;
+﻿using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
-  [XmlRoot("setting")]
+  [DataContract(Name = "setting", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class Setting {
-    [XmlElement("settingName")]
+    [DataMember(Name = "settingName", Order = 0)]
     public string Name { get; set; }
-    [XmlElement("settingValue")]
+    [DataMember(Name = "settingValue", Order = 1)]
     public string Value { get; set; }
   }
 }

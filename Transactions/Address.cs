@@ -1,24 +1,27 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
+  [DataContract(Name = "address", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class Address {
-    [XmlElement("firstName")]
+    [DataMember(Name = "firstName", Order = 0, EmitDefaultValue = false)]
     public string FirstName { get; set; }
-    [XmlElement("lastName")]
+    [DataMember(Name = "lastName", Order = 1, EmitDefaultValue = false)]
     public string LastName { get; set; }
-    [XmlElement("company")]
+    [DataMember(Name = "company", Order = 2, EmitDefaultValue = false)]
     public string Company { get; set; }
-    [XmlElement("address")]
+    [DataMember(Name = "address", Order = 3, EmitDefaultValue = false)]
     public string Street { get; set; }
-    [XmlElement("city")]
+    [DataMember(Name = "city", Order = 4, EmitDefaultValue = false)]
     public string City { get; set; }
-    [XmlElement("state")]
+    [DataMember(Name = "state", Order = 5, EmitDefaultValue = false)]
     public string State { get; set; }
-    [XmlElement("zip")]
+    [DataMember(Name = "zip", Order = 6, EmitDefaultValue = false)]
     public string ZipCode { get; set; }
-    [XmlElement("country")]
+    [DataMember(Name = "country", Order = 7, EmitDefaultValue = false)]
     public string Country { get; set; }
+    [DataMember(Name = "phoneNumber", Order = 8, EmitDefaultValue = false)]
+    public string PhoneNumber { get; set; }
+    [DataMember(Name = "faxNumber", Order = 9, EmitDefaultValue = false)]
+    public string FaxNumber { get; set; }
   }
 }

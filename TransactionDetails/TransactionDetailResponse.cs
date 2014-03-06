@@ -1,15 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using AuthorizeNetLite.Response;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
-  [XmlRoot("getTransactionDetailsResponse", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
-  public sealed class TransactionDetailResponse {
-    [XmlElement("messages")]
-    public Status Status { get; set; }
-
-    [XmlElement("transaction")]
+  [DataContract(Name = "getTransactionDetailsResponse", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
+  public sealed class TransactionDetailResponse : BaseResponse {
+    [DataMember(Name = "transaction", Order = 1)]
     public TransactionDetail Transaction { get; set; }
   }
 }

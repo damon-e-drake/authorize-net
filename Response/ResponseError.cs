@@ -1,13 +1,11 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Response {
-  [Serializable]
-  [XmlRoot("error")]
+  [DataContract(Name = "error", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public class ResponseError {
-    [XmlElement("errorCode")]
+    [DataMember(Name = "errorCode")]
     public string Code { get; set; }
-    [XmlElement("errorText")]
+    [DataMember(Name = "errorText")]
     public string Text { get; set; }
   }
 }

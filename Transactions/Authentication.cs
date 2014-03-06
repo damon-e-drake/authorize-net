@@ -1,11 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [XmlRoot("merchantAuthentication")]
+  [DataContract(Name = "merchantAuthentication", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class Authentication {
-    [XmlElement("name")]
+    [DataMember(Name = "name", IsRequired = true, Order = 0)]
     public string ApiLogin { get; set; }
-    [XmlElement("transactionKey")]
+    [DataMember(Name = "transactionKey", Order = 1)]
     public string TransactionKey { get; set; }
   }
 }

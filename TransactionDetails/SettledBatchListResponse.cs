@@ -1,16 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using AuthorizeNetLite.Response;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
-  [XmlRoot("getSettledBatchListResponse", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
-  public sealed class SettledBatchListResponse {
-    [XmlElement("messages")]
-    public Status Status { get; set; }
-
-    [XmlArray("batchList")]
-    [XmlArrayItem("batch", typeof(Batch))]
-    public Batch[] Batches { get; set; }
+  [DataContract(Name = "getSettledBatchListResponse", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
+  public sealed class SettledBatchListResponse : BaseResponse {
+    [DataMember(Name = "batchList", Order = 1)]
+    public List<Batch> Batches { get; set; }
   }
 }

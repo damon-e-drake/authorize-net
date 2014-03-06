@@ -1,25 +1,25 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
-  [XmlRoot("statistic")]
+  [DataContract(Name = "statistic", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class BatchStatistic {
-    [XmlElement("accountType")]
+    [DataMember(Name = "accountType", Order = 0)]
     public string Account { get; set; }
-    [XmlElement("chargeAmount")]
+    [DataMember(Name = "chargeAmount", Order = 1)]
     public decimal ChargeAmount { get; set; }
-    [XmlElement("chargeCount")]
+    [DataMember(Name = "chargeCount", Order = 2)]
     public int ChargeCount { get; set; }
-    [XmlElement("refundAmount")]
+    [DataMember(Name = "refundAmount", Order = 3)]
     public decimal RefundAmount { get; set; }
-    [XmlElement("refundCount")]
+    [DataMember(Name = "refundCount", Order = 4)]
     public int RefundCount { get; set; }
-    [XmlElement("voidCount")]
+    [DataMember(Name = "voidCount", Order = 5)]
     public int VoidCount { get; set; }
-    [XmlElement("DeclineCount")]
+    [DataMember(Name = "DeclineCount", Order = 6)]
     public int DeclineCount { get; set; }
-    [XmlElement("ErrorCount")]
+    [DataMember(Name = "ErrorCount", Order = 7)]
     public int ErrorCount { get; set; }
   }
 }
