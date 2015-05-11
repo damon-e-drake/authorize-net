@@ -27,7 +27,7 @@ namespace AuthorizeNetLite.Request {
     public void Post(GatewayUrl url) {
       string xml = "";
 
-      var serializer = new XmlSerializer(this.GetType());
+      var serializer = new XmlSerializer(GetType());
       var xn = new XmlSerializerNamespaces();
       xn.Add("", "");
       using (MemoryStream ms = new MemoryStream()) {
@@ -38,8 +38,8 @@ namespace AuthorizeNetLite.Request {
         }
       }
 
-      this.Response = null;
-      this.Error = null;
+      Response = null;
+      Error = null;
 
       try {
         HttpWebRequest authRequest = (HttpWebRequest)WebRequest.Create(StringEnum.GetValue(url));
@@ -57,12 +57,12 @@ namespace AuthorizeNetLite.Request {
           xml = sr.ReadToEnd();
           try {
             var ser = new XmlSerializer(typeof(TransactionResponse));
-            this.Response = (TransactionResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
+            Response = (TransactionResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
           }
           catch {
-            this.Response = null;
+            Response = null;
             var ser = new XmlSerializer(typeof(ErrorResponse));
-            this.Error = (ErrorResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
+            Error = (ErrorResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
           }
         }
       }

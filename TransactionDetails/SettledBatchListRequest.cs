@@ -24,7 +24,7 @@ namespace AuthorizeNetLite.TransactionDetails {
       get {
         string xml = "";
 
-        var serializer = new XmlSerializer(this.GetType());
+        var serializer = new XmlSerializer(GetType());
         var xn = new XmlSerializerNamespaces();
         xn.Add("", "");
         using (MemoryStream ms = new MemoryStream()) {
@@ -65,7 +65,7 @@ namespace AuthorizeNetLite.TransactionDetails {
     }
 
     public SettledBatchListRequest() {
-      this.Credentials = Configuration.MerchantAuthentication;
+      Credentials = Configuration.MerchantAuthentication;
     }
   }
 }
