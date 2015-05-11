@@ -155,7 +155,6 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 /AuthNetConsole
-/AuthNet.sln
 /packages
 /.nuget/NuGet.Config
 *.nuspec

@@ -1,24 +1,65 @@
-﻿using System.Net.Http;
-using System.Runtime.Serialization;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 using AuthorizeNetLite.Options;
+using AuthorizeNetLite.Transactions;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [DataContract(Name = "getTransactionListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
-  public sealed class BatchTransactionsRequest : BaseRequest {
-    [DataMember(Name = "batchId", Order = 1)]
+  [Serializable]
+  [XmlRoot("getTransactionListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
+  public sealed class BatchTransactionsRequest {
+    [XmlElement("merchantAuthentication")]
+    public Authentication Credentials { get; set; }
+    [XmlElement("batchId")]
     public long BatchID { get; set; }
 
-    public BatchTransactionsRequest() {
-      this.Credentials = Configuration.MerchantAuthentication;
-    }
+    [XmlIgnore]
+    public BatchTransactionsResponse Response { get; set; }
 
-    public async Task<BatchTransactionsResponse> Response() {
-      using (var request = new HttpClient()) {
-        var result = await request.PostAsync(StringEnum.GetValue(Configuration.Endpoint), new StringContent(Util.ConvertToXml<BatchTransactionsRequest>(this), Encoding.UTF8, "text/xml"));
-        return Util.ConvertFromXml<BatchTransactionsResponse>(await result.Content.ReadAsStringAsync());
+    public void Post(GatewayUrl url) {
+      string xml = "";
+
+      var serializer = new XmlSerializer(GetType());
+      var xn = new XmlSerializerNamespaces();
+      xn.Add("", "");
+      using (MemoryStream ms = new MemoryStream()) {
+        using (StreamWriter sw = new StreamWriter(ms)) {
+          serializer.Serialize(sw, this);
+          ms.Position = 0;
+          xml = Encoding.UTF8.GetString(ms.ToArray());
+        }
       }
-    } 
+
+      try {
+        HttpWebRequest authRequest = (HttpWebRequest)WebRequest.Create(StringEnum.GetValue(url));
+        authRequest.Method = "POST";
+        authRequest.ContentLength = xml.Length;
+        authRequest.ContentType = "text/xml";
+
+        using (StreamWriter sw = new StreamWriter(authRequest.GetRequestStream())) {
+          sw.Write(xml);
+        }
+
+        Response = null;
+
+        HttpWebResponse authResponse = (HttpWebResponse)authRequest.GetResponse();
+
+        using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
+          xml = sr.ReadToEnd();
+          try {
+            var ser = new XmlSerializer(typeof(BatchTransactionsResponse));
+            Response = (BatchTransactionsResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
+          }
+          catch (Exception e) {
+            Response = null;
+          }
+        }
+      }
+      catch (WebException w) {
+        Console.WriteLine(w.Message);
+      }
+    }
   }
 }
