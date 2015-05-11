@@ -107,19 +107,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="app.config.install.xdt">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="app.config.uninstall.xdt">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
-    <None Include="web.config.uninstall.xdt">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="web.config.install.xdt">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
