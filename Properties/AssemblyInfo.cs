@@ -2,14 +2,22 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
 [assembly: AssemblyTitle("AuthorizeNetLite")]
-[assembly: AssemblyDescription("AuthorizeNet Gateway library that uses XML with the AIM API.")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Damon E. Drake")]
-[assembly: AssemblyProduct("AuthorizeNet Lite")]
-[assembly: AssemblyCopyright("Copyright © Damon E. Drake 2012-2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("AuthorizeNetLite")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-[assembly: Guid("62c1f0ad-2e8b-4a6a-ac44-c6a8a1e2d5aa")]
-[assembly: AssemblyVersion("2.0.0.*")]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("eef1398b-44da-496d-9e86-39045ff972b4")]
