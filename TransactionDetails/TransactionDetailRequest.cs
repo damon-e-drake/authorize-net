@@ -19,7 +19,7 @@ namespace AuthorizeNetLite.TransactionDetails {
     public TransactionDetailResponse Response { get; set; }
 
     public void Post(GatewayUrl url) {
-      string xml = "";
+      byte[] xml;
 
       var serializer = new XmlSerializer(GetType());
       var xn = new XmlSerializerNamespaces();
@@ -27,38 +27,26 @@ namespace AuthorizeNetLite.TransactionDetails {
       using (MemoryStream ms = new MemoryStream()) {
         using (StreamWriter sw = new StreamWriter(ms)) {
           serializer.Serialize(sw, this);
-          ms.Position = 0;
-          xml = Encoding.UTF8.GetString(ms.ToArray());
+          xml = ms.ToArray();
         }
       }
 
-      try {
-        HttpWebRequest authRequest = (HttpWebRequest)WebRequest.Create(StringEnum.GetValue(url));
-        authRequest.Method = "POST";
-        authRequest.ContentLength = xml.Length;
-        authRequest.ContentType = "text/xml";
+      HttpWebRequest authRequest = (HttpWebRequest)WebRequest.Create(StringEnum.GetValue(url));
+      authRequest.Method = "POST";
+      authRequest.ContentLength = xml.Length;
+      authRequest.ContentType = "text/xml";
 
-        using (StreamWriter sw = new StreamWriter(authRequest.GetRequestStream())) {
-          sw.Write(xml);
-        }
-
-        Response = null;
-
-        HttpWebResponse authResponse = (HttpWebResponse)authRequest.GetResponse();
-
-        using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
-          xml = sr.ReadToEnd();
-          try {
-            var ser = new XmlSerializer(typeof(TransactionDetailResponse));
-            Response = (TransactionDetailResponse)ser.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
-          }
-          catch (Exception e) {
-            Response = null;
-          }
-        }
+      using (authRequest.GetRequestStream()) {
+        sw.Write(xml, 0, xml.Length);
       }
-      catch (WebException w) {
-        Console.WriteLine(w.Message);
+
+      Response = null;
+
+      HttpWebResponse authResponse = (HttpWebResponse)authRequest.GetResponse();
+
+      using (StreamReader sr = new StreamReader(authResponse.GetResponseStream())) {
+        var ser = new XmlSerializer(typeof(TransactionDetailResponse));
+        Response = (TransactionDetailResponse)ser.Deserialize(new StringReader(sr.ReadToEnd()));
       }
     }
   }
