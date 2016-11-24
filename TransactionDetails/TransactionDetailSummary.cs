@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
   [XmlRoot("transaction")]
   public sealed class TransactionDetailSummary {
     [XmlElement("transId")]

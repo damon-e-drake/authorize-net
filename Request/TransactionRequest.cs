@@ -8,7 +8,6 @@ using System.Text;
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Request {
-  [Serializable]
   [XmlRoot("createTransactionRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class TransationRequest {
     [XmlElement("merchantAuthentication")]

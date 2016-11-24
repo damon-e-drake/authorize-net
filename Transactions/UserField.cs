@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   [XmlRoot("userField")]
   public sealed class UserField {
     [XmlElement("name")]

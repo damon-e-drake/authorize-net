@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
   [XmlRoot("statistic")]
   public sealed class BatchStatistic {
     [XmlElement("accountType")]

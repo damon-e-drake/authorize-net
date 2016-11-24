@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
   [XmlRoot("batch")]
   public sealed class Batch {
     [XmlElement("batchId")]

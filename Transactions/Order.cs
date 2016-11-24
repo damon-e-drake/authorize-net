@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   [XmlRoot("order")]
   public sealed class Order{
     [XmlElement("invoiceNumber")]

@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   [XmlRoot("creditCard")]
   public sealed class CreditCard : Payment {
     [XmlElement("cardNumber")]

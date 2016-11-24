@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   public sealed class Address {
     [XmlElement("firstName")]
     public string FirstName { get; set; }

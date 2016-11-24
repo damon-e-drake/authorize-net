@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Response {
-  [Serializable]
   [XmlRoot("createTransactionResponse", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public class TransactionResponse {
     [XmlElement("messages")]

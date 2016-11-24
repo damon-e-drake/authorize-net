@@ -7,7 +7,6 @@ using AuthorizeNetLite.Options;
 using AuthorizeNetLite.Transactions;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
   [XmlRoot("getUnsettledTransactionListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public class UnsettledRequest {
     [XmlElement("merchantAuthentication")]
