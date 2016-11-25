@@ -25,16 +25,19 @@ namespace AuthorizeNetLite.Request {
       using (var stream = new MemoryStream()) {
         requestSerializer.Serialize(stream, this);
 
-        using (var response = await client.PostAsync(StringEnum.GetValue(url ?? Configuration.Endpoint), new ByteArrayContent(stream.ToArray()) {
+        using (var httpResponse = await client.PostAsync(StringEnum.GetValue(url ?? Configuration.Endpoint), new ByteArrayContent(stream.ToArray()) {
           Headers = { ContentType = new MediaTypeHeaderValue("text/xml") }
         }, cancellationToken).ConfigureAwait(false)) {
-          response.EnsureSuccessStatusCode();
-          using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false)) {
+          httpResponse.EnsureSuccessStatusCode();
+          using (var responseStream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false)) {
             try {
-              return (TResponse)responseSerializer.Deserialize(responseStream);
+              var response = (TResponse)responseSerializer.Deserialize(responseStream);
+              if (response.Status.ResultCode != "Ok")
+                throw new AuthNetException(typeof(TRequest), response.Status);
+              return response;
             } catch (InvalidOperationException) { // This is the only way to tell if it was <ErrorResponse> instead :(
               responseStream.Position = 0;
-              throw new AuthNetException((ErrorResponse)errorSerializer.Deserialize(responseStream));
+              throw new AuthNetException(typeof(TRequest), ((ErrorResponse)errorSerializer.Deserialize(responseStream)).Status);
             }
           }
         }
@@ -46,10 +49,10 @@ namespace AuthorizeNetLite.Request {
     public Status Status { get; set; }
   }
 
-  class AuthNetException : Exception {
-    public AuthNetException(ErrorResponse response) : base(response.Status.Message.Text) {
-      Response = response;
+  public class AuthNetException : Exception {
+    public AuthNetException(Type requestType, Status status) : base(requestType.Name + " failed: " + status.Message.Text) {
+      Status = status;
     }
-    public ErrorResponse Response { get; }
+    public Status Status { get; }
   }
 }
