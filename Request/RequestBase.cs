@@ -12,7 +12,7 @@ using AuthorizeNetLite.Response;
 using AuthorizeNetLite.Transactions;
 
 namespace AuthorizeNetLite.Request {
-  public abstract class RequestBase<TRequest, TResponse> where TRequest : RequestBase<TRequest, TResponse> {
+  public abstract class RequestBase<TRequest, TResponse> where TRequest : RequestBase<TRequest, TResponse> where TResponse : ResponseBase {
     [XmlElement("merchantAuthentication")]
     public Authentication Credentials { get; set; } = Configuration.MerchantAuthentication;
 
@@ -40,6 +40,10 @@ namespace AuthorizeNetLite.Request {
         }
       }
     }
+  }
+  public abstract class ResponseBase {
+    [XmlElement("messages")]
+    public Status Status { get; set; }
   }
 
   class AuthNetException : Exception {
