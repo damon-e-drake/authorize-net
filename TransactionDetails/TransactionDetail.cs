@@ -44,6 +44,9 @@ namespace AuthorizeNetLite.TransactionDetails {
     [XmlElement("settleAmount")]
     public decimal SettledAmount { get; set; }
 
+    [XmlElement("transactionStatus")]
+    public string Status { get; set; }
+
     [XmlArray("payment")]
     [XmlArrayItem("creditCard", typeof(CreditCard))]
     [XmlArrayItem("bankAccount", typeof(ECheck))]

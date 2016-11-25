@@ -6,6 +6,8 @@ namespace AuthorizeNetLite.Transactions {
   public sealed class CreditCard : Payment {
     [XmlElement("cardNumber")]
     public string CardNumber { get; set; }
+    [XmlElement("cardType")]
+    public string CardType { get; set; }
     [XmlElement("expirationDate")]
     public string ExpirationDate { get; set; }
     [XmlElement("cardCode")]

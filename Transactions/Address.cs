@@ -19,5 +19,7 @@ namespace AuthorizeNetLite.Transactions {
     public string ZipCode { get; set; }
     [XmlElement("country")]
     public string Country { get; set; }
+    [XmlElement("phoneNumber")]
+    public string PhoneNumber { get; set; }
   }
 }
