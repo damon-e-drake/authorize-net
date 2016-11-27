@@ -1,30 +1,23 @@
 {
   "version": "1.0.0-*",
-  "description": "AuthorizeNetLite Class Library",
-  "authors": [ "Damon" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "description": "Simple, modern, efficient, client for Authorize .Net",
+  "authors": [ "Damon", "SLaks" ],
+  "packOptions": {
+    "tags": [ "Authorize.Net" ],
+    "projectUrl": "https://github.com/damon-e-drake/authorize-net",
+    "licenseUrl": ""
+  },
   "frameworks": {
-    "net452": {
-      "dependencies": {
-        "Microsoft.Net.Http": "2.2.29"
-      }
-    },
-    "dotnet5.4": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",      
-        "System.Threading": "4.0.11-beta-23516"
-      }
-    }
+    "netstandard1.1": {}
   },
   "dependencies": {
-    "System.Runtime": "4.0.21-beta-23516",
-    "System.IO": "4.0.0-beta-23019",
-    "System.Reflection": "4.0.10",
-    "System.Xml.XmlDocument": "4.0.0",
-    "System.Xml.XmlSerializer": "4.0.10"
+    "Microsoft.CSharp": "4.0.1",
+    "System.Collections": "4.0.11",
+    "System.Reflection": "4.1.0",
+    "System.Reflection.Extensions": "4.0.1",
+    "System.Linq": "4.1.0",
+    "System.Threading": "4.0.11",
+    "System.Net.Http": "4.1.0",
+    "System.Xml.XmlSerializer": "4.0.11"
   }
 }
