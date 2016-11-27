@@ -1,7 +1,6 @@
 ﻿using AuthorizeNetLite.Options;
 using AuthorizeNetLite.Transactions;
 using System.Collections.Generic;
-using System.Configuration;
 
 namespace AuthorizeNetLite {
   public static class Configuration {
@@ -21,12 +20,6 @@ namespace AuthorizeNetLite {
 
       Configuration.Endpoint = Endpoint;
 
-      if (MerchantAuthentication == null) {
-        MerchantAuthentication = new Authentication {
-          ApiLogin = ConfigurationManager.AppSettings["AuthorizeNetApiLogin"].ToString(),
-          TransactionKey = ConfigurationManager.AppSettings["AuthorizeNetTransactionKey"].ToString()
-        };
-      }
       Configuration.MerchantAuthentication = MerchantAuthentication;
 
       if (AvsCodes == null) {
