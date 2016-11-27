@@ -14,7 +14,7 @@ namespace AuthorizeNetLite.TransactionDetails {
   [XmlRoot("getSettledBatchListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public sealed class SettledBatchListRequest : RequestBase<SettledBatchListRequest, SettledBatchListResponse> {
     public static async Task<IReadOnlyList<Batch>> GetAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default(CancellationToken)) {
-      return (await new SettledBatchListRequest { StartDate = startDate, EndDate = endDate }.GetResponseAsync(cancellationToken: cancellationToken)).Batches;
+      return (await new SettledBatchListRequest { StartDate = startDate, EndDate = endDate }.GetResponseAsync(cancellationToken: cancellationToken)).Batches ?? new Batch[0];
     }
 
     [XmlElement("includeStatistics")]

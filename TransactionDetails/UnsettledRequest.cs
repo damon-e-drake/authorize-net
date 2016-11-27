@@ -14,7 +14,7 @@ namespace AuthorizeNetLite.TransactionDetails {
   [XmlRoot("getUnsettledTransactionListRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
   public class UnsettledRequest : RequestBase<UnsettledRequest, UnsettledResponse> {
     public static async Task<IReadOnlyList<TransactionDetailSummary>> GetAsync(CancellationToken cancellationToken = default(CancellationToken)) {
-      return (await new UnsettledRequest().GetResponseAsync(cancellationToken: cancellationToken)).Transactions;
+      return (await new UnsettledRequest().GetResponseAsync(cancellationToken: cancellationToken)).Transactions ?? new TransactionDetailSummary[0];
     }
   }
 }
