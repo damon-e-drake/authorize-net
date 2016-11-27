@@ -7,7 +7,6 @@ using System.Xml.Serialization;
 using AuthorizeNetLite.Transactions;
 
 namespace AuthorizeNetLite.TransactionDetails {
-  [Serializable]
   [XmlRoot("transaction")]
   public sealed class TransactionDetail {
     [XmlElement("transId")]
@@ -44,6 +43,9 @@ namespace AuthorizeNetLite.TransactionDetails {
     public decimal AuthorizedAmount { get; set; }
     [XmlElement("settleAmount")]
     public decimal SettledAmount { get; set; }
+
+    [XmlElement("transactionStatus")]
+    public string Status { get; set; }
 
     [XmlArray("payment")]
     [XmlArrayItem("creditCard", typeof(CreditCard))]

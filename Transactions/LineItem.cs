@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   [XmlRoot("lineItem")]
   public sealed class LineItem {
     [XmlElement("itemId")]

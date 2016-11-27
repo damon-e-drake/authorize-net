@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using AuthorizeNetLite.Attributes;
 
 namespace AuthorizeNetLite.Options {
-  public class StringEnum {
-    public static string GetValue(Enum value) {
-      string output = null;
-
-      StringValue[] attrs = value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(StringValue), false) as StringValue[];
-      if (attrs.Length > 0) { output = attrs[0].Value; }
-
-      return output;
+  static class StringEnum {
+    static class Cache<TEnum> where TEnum : struct {
+      public static readonly IReadOnlyDictionary<TEnum, string> Values =
+        typeof(TEnum).GetTypeInfo().DeclaredFields
+          .Where(f => f.IsStatic)
+          .ToDictionary(
+            f => (TEnum)f.GetValue(null),
+            f => f.GetCustomAttribute<StringValue>().Value);
+    }
+    public static string GetValue<TEnum>(TEnum value) where TEnum : struct {
+      return Cache<TEnum>.Values[value];
     }
   }
 }

@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   [XmlRoot("bankAccount")]
   public sealed class ECheck : Payment {
     //[XmlElement("accountType")]

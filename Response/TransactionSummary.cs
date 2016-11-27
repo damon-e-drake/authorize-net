@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Response {
-  [Serializable]
   [XmlRoot("transactionResponse")]
   public class TransactionSummary {
     [XmlElement("authCode")]

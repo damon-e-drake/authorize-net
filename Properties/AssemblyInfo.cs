@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AuthorizeNetLite")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Simple, modern, efficient, client for Authorize .Net")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AuthorizeNetLite")]
@@ -18,6 +18,3 @@ using System.Runtime.InteropServices;
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("eef1398b-44da-496d-9e86-39045ff972b4")]

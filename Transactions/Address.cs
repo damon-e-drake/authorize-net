@@ -2,7 +2,6 @@
 using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Transactions {
-  [Serializable]
   public sealed class Address {
     [XmlElement("firstName")]
     public string FirstName { get; set; }
@@ -20,5 +19,7 @@ namespace AuthorizeNetLite.Transactions {
     public string ZipCode { get; set; }
     [XmlElement("country")]
     public string Country { get; set; }
+    [XmlElement("phoneNumber")]
+    public string PhoneNumber { get; set; }
   }
 }

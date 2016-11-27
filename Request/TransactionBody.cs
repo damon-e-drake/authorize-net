@@ -4,7 +4,6 @@ using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Request {
 
-  [Serializable]
   [XmlRoot("transactionRequest")]
   public sealed class TransactionBody {
     [XmlElement("transactionType")]
