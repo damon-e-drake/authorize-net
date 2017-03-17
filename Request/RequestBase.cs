@@ -35,7 +35,8 @@ namespace AuthorizeNetLite.Request {
               if (response.Status.ResultCode != "Ok")
                 throw new AuthNetException(typeof(TRequest), response.Status);
               return response;
-            } catch (InvalidOperationException) { // This is the only way to tell if it was <ErrorResponse> instead :(
+            }
+            catch (InvalidOperationException) { // This is the only way to tell if it was <ErrorResponse> instead :(
               responseStream.Position = 0;
               throw new AuthNetException(typeof(TRequest), ((ErrorResponse)errorSerializer.Deserialize(responseStream)).Status);
             }

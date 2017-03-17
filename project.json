@@ -11,13 +11,13 @@
     "netstandard1.1": {}
   },
   "dependencies": {
-    "Microsoft.CSharp": "4.0.1",
-    "System.Collections": "4.0.11",
-    "System.Reflection": "4.1.0",
-    "System.Reflection.Extensions": "4.0.1",
-    "System.Linq": "4.1.0",
-    "System.Threading": "4.0.11",
-    "System.Net.Http": "4.1.0",
-    "System.Xml.XmlSerializer": "4.0.11"
+    "Microsoft.CSharp": "4.3.0",
+    "System.Collections": "4.3.0",
+    "System.Linq": "4.3.0",
+    "System.Net.Http": "4.3.1",
+    "System.Reflection": "4.3.0",
+    "System.Reflection.Extensions": "4.3.0",
+    "System.Threading": "4.3.0",
+    "System.Xml.XmlSerializer": "4.3.0"
   }
 }

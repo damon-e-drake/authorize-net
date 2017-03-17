@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace AuthorizeNetLite.Request {
   [XmlRoot("createTransactionRequest", Namespace = "AnetApi/xml/v1/schema/AnetApiSchema.xsd")]
-  public sealed class TransationRequest : RequestBase<TransationRequest, TransactionResponse> {
+  public sealed class TransactionRequest : RequestBase<TransactionRequest, TransactionResponse> {
     [XmlElement("refId")]
     public string TransactionReferenceID { get; set; }
 
