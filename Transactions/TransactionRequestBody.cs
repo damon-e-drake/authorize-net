@@ -13,7 +13,7 @@ namespace AuthorizeNetLite.Transactions {
     public decimal Amount { get; set; }
     [JsonProperty("currencyCode", Order = 3, NullValueHandling = NullValueHandling.Ignore)]
     public string CurrencyCode { get; set; }
-    [JsonProperty("payment", Order = 4)]
+    [JsonProperty("payment", Order = 4), JsonConverter(typeof(PaymentConverter))]
     public IPayment Payment { get; set; }
     //profile 5
     //solution 6

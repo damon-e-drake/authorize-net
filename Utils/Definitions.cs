@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace AuthorizeNetLite.Utils {
   public static class Definitions {
     public static Dictionary<string, string> AvsCodes { get; private set; }
-    public static Dictionary<string, string> CardCodes { get; private set; };
-    public static Dictionary<string, string> TransactionCodes { get; private set; };
+    public static Dictionary<string, string> CardCodes { get; private set; }
+    public static Dictionary<string, string> TransactionCodes { get; private set; }
 
     static Definitions() {
       RegisterAvsCodes();
@@ -70,4 +67,4 @@ namespace AuthorizeNetLite.Utils {
         };
     }
   }
-  }
+}
