@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace AuthorizeNetLite.Transactions {
+namespace AuthorizeNetLite.Enumerations {
   public enum TransactionType {
     [EnumMember(Value = "authOnlyTransaction")]
     AuthOnly,

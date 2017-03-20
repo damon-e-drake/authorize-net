@@ -6,15 +6,18 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Reflection;
+using AuthorizeNetLite.Enumerations;
 
 namespace AuthorizeNetLite {
   public class AuthorizeNetService {
-    private static HttpClient _client { get; set; }
-    public Authentication Credentials { get; private set; }
+    private HttpClient _client { get; set; }
+    private Authentication _credentials { get; set; }
+    private string _endpoint { get; set; }
 
-    public AuthorizeNetService(Authentication credentials) {
+    public AuthorizeNetService(Authentication credentials, ApiEndpoint endpoint = ApiEndpoint.Production) {
       _client = new HttpClient();
-      Credentials = credentials;
+      _credentials = credentials;
+      _endpoint = endpoint == ApiEndpoint.Sandbox? "https://apitest.authorize.net/xml/v1/request.api" : "https://api.authorize.net/xml/v1/request.api";
     }
 
     public Response ExecuteRequest<Request, Response>(Request obj) {
@@ -23,7 +26,7 @@ namespace AuthorizeNetLite {
       }
       var sb = new StringBuilder();
       sb.Append("{\"" + GetApiName<Request>() + "\":");
-      ((IAuthorizeNetRequest)obj).Credentials = Credentials;
+      ((IAuthorizeNetRequest)obj).Credentials = _credentials;
       sb.Append(JsonConvert.SerializeObject(obj));
       sb.Append("}");
       return default(Response);
