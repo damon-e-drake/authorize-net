@@ -1,7 +1,7 @@
 {
   "version": "1.0.0-*",
   "description": "Simple, modern, efficient, client for Authorize .Net",
-  "authors": [ "Damon", "SLaks" ],
+  "authors": [ "Damon" ],
   "packOptions": {
     "tags": [ "Authorize.Net" ],
     "projectUrl": "https://github.com/damon-e-drake/authorize-net",

@@ -21,7 +21,7 @@ namespace AuthorizeNetLite.Transactions {
     //terminalNumber 8
     [JsonProperty("authCode", Order = 9, NullValueHandling = NullValueHandling.Ignore)]
     public string AuthorizationCode { get; set; }
-    [JsonProperty("refTransId", Order = 10, NullValueHandling = NullValueHandling.Ignore)]
+    [JsonProperty("refTransID", Order = 10, NullValueHandling = NullValueHandling.Ignore)]
     public string ReferencedTransactionID { get; set; }
     //splitTenderId 11
     [JsonProperty("order", Order = 12, NullValueHandling = NullValueHandling.Ignore)]
