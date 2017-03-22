@@ -1,15 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using AuthorizeNetLite.Enumerations;
+using System.Collections.Generic;
 
 namespace AuthorizeNetLite.Utils {
   public static class Definitions {
     public static Dictionary<string, string> AvsCodes { get; private set; }
     public static Dictionary<string, string> CardCodes { get; private set; }
     public static Dictionary<string, string> TransactionCodes { get; private set; }
+    public static Dictionary<TransactionType, string> TransactionTypes { get; private set; }
 
     static Definitions() {
       RegisterAvsCodes();
       RegisterCardCodes();
       RegisterTransactionCodes();
+      RegisterTransactionTypes();
     }
 
     private static void RegisterAvsCodes() {
@@ -65,6 +68,19 @@ namespace AuthorizeNetLite.Utils {
           { "chargebackReversal", "Chargeback Reversal" },
           { "authorizedPendingRelease", "Authorized Pending Release" },
         };
+    }
+    private static void RegisterTransactionTypes() {
+      TransactionTypes = new Dictionary<TransactionType, string> {
+        { TransactionType.AuthCapture, "Authorize & Capture" },
+        { TransactionType.AuthCaptureContinue, "Authorize & Capture Continue" },
+        { TransactionType.AuthOnly, "Authorize Only" },
+        { TransactionType.AuthOnlyContinue, "Authorize Only Continue" },
+        { TransactionType.CaptureOnly, "Capture Only" },
+        { TransactionType.GetDetails, "Get Details" },
+        { TransactionType.PriorAuthCapture, "Prior Authorization Capture" },
+        { TransactionType.Refund, "Refund" },
+        { TransactionType.Void, "Void" }
+      };
     }
   }
 }

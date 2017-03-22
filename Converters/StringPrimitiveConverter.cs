@@ -3,14 +3,14 @@ using Newtonsoft.Json.Linq;
 using System;
 
 namespace AuthorizeNetLite.Converters {
-  public class StringIntConverter : JsonConverter {
+  public class StringPrimitiveConverter<T> : JsonConverter {
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
       var jt = JToken.ReadFrom(reader);
-      return jt.Value<int>();
+      return jt.Value<T>();
     }
 
     public override bool CanConvert(Type objectType) {
-      return typeof(int).Equals(objectType);
+      return typeof(T).Equals(objectType);
     }
 
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
