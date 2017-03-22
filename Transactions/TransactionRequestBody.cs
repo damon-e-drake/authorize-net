@@ -9,7 +9,7 @@ namespace AuthorizeNetLite.Transactions {
   public class TransactionRequestBody {
     [JsonProperty("transactionType", Order = 1), JsonConverter(typeof(StringEnumConverter))]
     public TransactionType TransactionType { get; set; }
-    [JsonProperty("amount", Order = 2), JsonConverter(typeof(StringMoneyConverter))]
+    [JsonProperty("amount", Order = 2), JsonConverter(typeof(StringPrimitiveConverter<decimal>))]
     public decimal Amount { get; set; }
     [JsonProperty("currencyCode", Order = 3, NullValueHandling = NullValueHandling.Ignore)]
     public string CurrencyCode { get; set; }
