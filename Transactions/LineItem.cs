@@ -9,9 +9,9 @@ namespace AuthorizeNetLite.Transactions {
     public string Name { get; set; }
     [JsonProperty("description", Order = 3)]
     public string Description { get; set; }
-    [JsonProperty("quantity", Order = 4), JsonConverter(typeof(MoneyStringConverter))]
+    [JsonProperty("quantity", Order = 4), JsonConverter(typeof(StringMoneyConverter))]
     public decimal Quantity { get; set; }
-    [JsonProperty("unitPrice", Order = 5), JsonConverter(typeof(MoneyStringConverter))]
+    [JsonProperty("unitPrice", Order = 5), JsonConverter(typeof(StringMoneyConverter))]
     public decimal Price { get; set; }
     [JsonProperty("taxable", Order = 6)]
     public bool Taxable { get; set; }
