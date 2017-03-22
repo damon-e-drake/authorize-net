@@ -1,11 +1,15 @@
 {
-  "version": "1.0.0-*",
-  "description": "Simple, modern, efficient, client for Authorize .Net",
-  "authors": [ "Damon" ],
+  "version": "3.0.1",
+  "title": "AuthorizeNet Lite",
+  "description": "Use this to integrate with AIM (json) for Payment Transactions, and Transaction Reporting. This is a lightweight version of the AuthorizeNet package.",
+  "authors": [ "Damon Drake" ],
+  "language": "en-US",
   "packOptions": {
-    "tags": [ "Authorize.Net" ],
+    "owners": [ "Damon Drake" ],
+    "tags": [ "Authorize.Net", "JSON", "AIM", "API" ],
     "projectUrl": "https://github.com/damon-e-drake/authorize-net",
-    "licenseUrl": ""
+    "licenseUrl": "https://opensource.org/licenses/MIT",
+    "summary": "Use this to integrate with AIM (json) for Payment Transactions, and Transaction Reporting. This is a lightweight version of the AuthorizeNet package."
   },
   "frameworks": {
     "net45": {

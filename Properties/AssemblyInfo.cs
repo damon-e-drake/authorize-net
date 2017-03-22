@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AuthorizeNetLite")]
-[assembly: AssemblyDescription("Simple, modern, efficient, client for Authorize .Net")]
+[assembly: AssemblyDescription("Use this to integrate with AIM (json) for Payment Transactions, and Transaction Reporting. This is a lightweight version of the AuthorizeNet package.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AuthorizeNetLite")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

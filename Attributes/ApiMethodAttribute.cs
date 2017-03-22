@@ -2,9 +2,9 @@
 
 namespace AuthorizeNetLite.Attributes {
   [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-  public class ApiNameAttribute : Attribute {
+  public class ApiMethodAttribute : Attribute {
     public string Name { get; private set; }
-    public ApiNameAttribute(string name) {
+    public ApiMethodAttribute(string name) {
       Name = name;
     }
   }
