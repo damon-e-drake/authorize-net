@@ -17,12 +17,6 @@ namespace AuthorizeNetLite {
     private string _endpoint { get; set; }
     private bool _disposed { get; set; }
 
-    /// <summary>
-    /// This creates an instance of the base AuthorizeNet service. This is meant to be used in a static context for an entire
-    /// application.
-    /// </summary>
-    /// <param name="credentials">API login credentials</param>
-    /// <param name="endpoint">Optional - Defaults to Production</param>
     public AuthorizeNetService(Authentication credentials, ApiEndpoint endpoint = ApiEndpoint.Production) {
       _client = new HttpClient();
       _credentials = credentials;
@@ -31,7 +25,7 @@ namespace AuthorizeNetLite {
     }
 
     public string GenerateRequestJson<T>(T obj, Formatting format = Formatting.None) {
-      if (!typeof(IAuthorizeNetRequest).IsAssignableFrom(typeof(T))) { throw new Exception("Can't create a request from type: " + typeof(T).ToString()); }
+      if (!typeof(IAuthorizeNetRequest).IsAssignableFrom(typeof(T))) { throw new Exception(typeof(T).ToString() + " does not implement IAuthorizeNetRequest."); }
 
       ((IAuthorizeNetRequest)obj).Credentials = _credentials;
       return "{\"" + GetApiName<T>() + "\":" + JsonConvert.SerializeObject(obj, format) + "}";
@@ -47,11 +41,11 @@ namespace AuthorizeNetLite {
     public async Task<Response> ExecuteAsync<Request, Response>(Request obj) {
       var json = await ExecuteAsync(obj);
       if (!typeof(IAuthorizeNetResponse).IsAssignableFrom(typeof(Response))) { throw new Exception(typeof(Response).ToString() + " does not implement IAuthorizeNetResponse."); }
-      return default(Response);
+      return (Response)(object)JsonConvert.DeserializeObject<Response>(json);
     }
 
     public async Task<string> ExecuteAsync<T>(T obj, CancellationToken token = default(CancellationToken)) {
-      if (!typeof(IAuthorizeNetRequest).IsAssignableFrom(typeof(T))) { throw new Exception("Can't create a request from type: " + typeof(T).ToString()); }
+      if (!typeof(IAuthorizeNetRequest).IsAssignableFrom(typeof(T))) { throw new Exception(typeof(T).ToString() + " does not implement IAuthorizeNetRequest."); }
 
       ((IAuthorizeNetRequest)obj).Credentials = _credentials;
       var json = "{\"" + GetApiName<T>() + "\":" + JsonConvert.SerializeObject(obj) + "}";
