@@ -1,12 +1,12 @@
 ﻿using AuthorizeNetLite.Attributes;
+using AuthorizeNetLite.Enumerations;
 using AuthorizeNetLite.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Reflection;
-using AuthorizeNetLite.Enumerations;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

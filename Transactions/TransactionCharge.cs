@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace AuthorizeNetLite.Transactions {
   public sealed class TransactionCharge {
-    [JsonProperty("amount", Order = 1), JsonConverter(typeof(MoneyStringConverter))]
+    [JsonProperty("amount", Order = 1), JsonConverter(typeof(StringMoneyConverter))]
     public decimal Amount { get; set; }
 
     [JsonProperty("name", Order = 2)]

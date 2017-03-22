@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 
 namespace AuthorizeNetLite.Converters {
-  public class MoneyStringConverter : JsonConverter {
+  public class StringMoneyConverter : JsonConverter {
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
       var jt = JToken.ReadFrom(reader);
       return jt.Value<decimal>();
