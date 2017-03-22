@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System;
 
 namespace AuthorizeNetLite.Reporting {
-  [ApiName("getSettledBatchListRequest")]
+  [ApiMethod("getSettledBatchListRequest")]
   public class BatchListRequest : IAuthorizeNetRequest {
     [JsonProperty("merchantAuthentication")]
     public Authentication Credentials { get; set; }

@@ -28,7 +28,7 @@ namespace AuthorizeNetLite {
       if (!typeof(IAuthorizeNetRequest).IsAssignableFrom(typeof(T))) { throw new Exception(typeof(T).ToString() + " does not implement IAuthorizeNetRequest."); }
 
       ((IAuthorizeNetRequest)obj).Credentials = _credentials;
-      return "{\"" + GetApiName<T>() + "\":" + JsonConvert.SerializeObject(obj, format) + "}";
+      return "{\"" + GetApiMethod<T>() + "\":" + JsonConvert.SerializeObject(obj, format) + "}";
     }
 
     public async Task<string> ExecuteAsync(string json, CancellationToken token = default(CancellationToken)) {
@@ -48,13 +48,13 @@ namespace AuthorizeNetLite {
       if (!typeof(IAuthorizeNetRequest).IsAssignableFrom(typeof(T))) { throw new Exception(typeof(T).ToString() + " does not implement IAuthorizeNetRequest."); }
 
       ((IAuthorizeNetRequest)obj).Credentials = _credentials;
-      var json = "{\"" + GetApiName<T>() + "\":" + JsonConvert.SerializeObject(obj) + "}";
+      var json = "{\"" + GetApiMethod<T>() + "\":" + JsonConvert.SerializeObject(obj) + "}";
 
       return await ExecuteAsync(json);
     }
 
-    private string GetApiName<T>() {
-      var attr = typeof(T).GetTypeInfo().GetCustomAttributes(typeof(ApiNameAttribute), true).FirstOrDefault() as ApiNameAttribute;
+    private string GetApiMethod<T>() {
+      var attr = typeof(T).GetTypeInfo().GetCustomAttributes(typeof(ApiMethodAttribute), true).FirstOrDefault() as ApiMethodAttribute;
       if (attr != null) { return attr.Name; }
 
       return typeof(T).Name.ToLower();
