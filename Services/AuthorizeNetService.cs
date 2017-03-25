@@ -1,6 +1,7 @@
 ﻿using AuthorizeNetLite.Attributes;
 using AuthorizeNetLite.Enumerations;
 using AuthorizeNetLite.Interfaces;
+using AuthorizeNetLite.Security;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace AuthorizeNetLite {
   public class AuthorizeNetService : IDisposable {
+    private static bool _hasValidCredentials = false;
     private HttpClient _client { get; set; }
     private Authentication _credentials { get; set; }
     private string _endpoint { get; set; }
@@ -22,6 +24,14 @@ namespace AuthorizeNetLite {
       _credentials = credentials;
       _endpoint = endpoint == ApiEndpoint.Sandbox ? "https://apitest.authorize.net/xml/v1/request.api" : "https://api.authorize.net/xml/v1/request.api";
       _disposed = false;
+
+      if (!_hasValidCredentials) {
+        var auth = new AuthenticateTestRequest();
+        var response = ExecuteAsync<AuthenticateTestRequest, AuthenticateTestResponse>(auth).Result;
+
+        if (response == null || response.Status.Code.ToLower() != "ok") { throw new Exception("Could not authenticate with supplied credentials."); }
+        _hasValidCredentials = true;
+      }
     }
 
     public string GenerateRequestJson<T>(T obj, Formatting format = Formatting.None) {
