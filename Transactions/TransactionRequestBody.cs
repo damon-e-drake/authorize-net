@@ -27,7 +27,7 @@ namespace AuthorizeNetLite.Transactions {
     [JsonProperty("order", Order = 12, NullValueHandling = NullValueHandling.Ignore)]
     public Order OrderInformation { get; set; }
     [JsonProperty("lineItems", Order = 13, NullValueHandling = NullValueHandling.Ignore), JsonConverter(typeof(LineItemsConverter))]
-    public List<LineItem> LineItems { get; set; }
+    public IEnumerable<LineItem> LineItems { get; set; }
     [JsonProperty("tax", Order = 14, NullValueHandling = NullValueHandling.Ignore)]
     public TransactionCharge Tax { get; set; }
     [JsonProperty("duty", Order = 15, NullValueHandling = NullValueHandling.Ignore)]
@@ -49,8 +49,8 @@ namespace AuthorizeNetLite.Transactions {
     //retial 24
     //employeeId 25
     [JsonProperty("transactionSettings", Order = 26, NullValueHandling = NullValueHandling.Ignore), JsonConverter(typeof(TransactionSettingsConverter))]
-    public List<TransactionSetting> Settings { get; set; }
+    public IEnumerable<TransactionSetting> Settings { get; set; }
     [JsonProperty("userFields", Order = 27, NullValueHandling = NullValueHandling.Ignore), JsonConverter(typeof(UserFieldsConverter))]
-    public List<UserField> UserFields { get; set; }
+    public IEnumerable<UserField> UserFields { get; set; }
   }
 }
