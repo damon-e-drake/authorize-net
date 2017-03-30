@@ -15,6 +15,16 @@ namespace AuthorizeNetLite.Reporting {
     public long BatchID { get; set; }
     [JsonProperty("sorting", Order = 3, NullValueHandling = NullValueHandling.Ignore)]
     public Sorting Sorting { get; set; }
+    [JsonProperty("paging", Order = 4, NullValueHandling = NullValueHandling.Ignore)]
+    public Paging Paging { get; set; }
+  }
+
+  [ApiMethod("getUnsettledTransactionListRequest")]
+  public class UnsettledTransactionListRequest : IAuthorizeNetRequest {
+    [JsonProperty("merchantAuthentication", Order = 1)]
+    public Authentication Credentials { get; set; }
+    [JsonProperty("sorting", Order = 2, NullValueHandling = NullValueHandling.Ignore)]
+    public Sorting Sorting { get; set; }
     [JsonProperty("paging", Order = 3, NullValueHandling = NullValueHandling.Ignore)]
     public Paging Paging { get; set; }
   }
