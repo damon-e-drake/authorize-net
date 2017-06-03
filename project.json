@@ -1,5 +1,5 @@
 {
-  "version": "3.0.1",
+  "version": "3.0.3",
   "title": "AuthorizeNet Lite",
   "description": "Use this to integrate with AIM (json) for Payment Transactions, and Transaction Reporting. This is a lightweight version of the AuthorizeNet package.",
   "authors": [ "Damon Drake", "Jeffrey Powell" ],
@@ -23,27 +23,24 @@
     "netstandard1.3": {
       "dependencies": {
         "System.Runtime.Serialization.Primitives": "4.3.0",
-        "System.Reflection.TypeExtensions": "4.3.0",
-        "System.Net.Http": "4.3.1"
+        "System.Reflection.TypeExtensions": "4.3.0"
       }
     },
     "netstandard1.6": {
       "dependencies": {
         "System.Runtime.Serialization.Primitives": "4.3.0",
-        "System.Reflection.TypeExtensions": "4.3.0",
-        "System.Net.Http": "4.3.1"
+        "System.Reflection.TypeExtensions": "4.3.0"
       }
     },
     "netstandard2.0": {
       "dependencies": {
         "System.Runtime.Serialization.Primitives": "4.3.0",
-        "System.Reflection.TypeExtensions": "4.3.0",
-        "System.Net.Http": "4.3.1"
+        "System.Reflection.TypeExtensions": "4.3.0"
       }
     }
   },
   "dependencies": {
-    "Newtonsoft.Json": "10.0.1"
+    "Newtonsoft.Json": "10.0.2"
   },
   "scripts": {
     "postcompile": [
